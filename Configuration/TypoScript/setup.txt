@@ -45,6 +45,7 @@ plugin.tx_wsflexslider {
 		carousel = {$plugin.tx_wsflexslider.carousel}
 		
 		theme = {$plugin.tx_wsflexslider.theme}
+        altTheme = {$plugin.tx_wsflexslider.altTheme}
 		mods = {$plugin.tx_wsflexslider.mods}
 		moveJsToFooter = {$plugin.tx_wsflexslider.moveJsToFooter}
 		
@@ -74,7 +75,7 @@ page.includeJSFooterlibs {
 [global]
 
 page.includeJSFooter {
-	#xflexslider = EXT:ws_flexslider/Resources/Public/JavaScript/jquery.flexslider-min.js
+	xflexslider = EXT:ws_flexslider/Resources/Public/JavaScript/jquery.flexslider-min.js
 }
 
 

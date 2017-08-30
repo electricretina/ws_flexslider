@@ -16,4 +16,6 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT:source="FILE:EXT:ws_flexslider/Configuration/Typoscript/ContentElementWizard.txt">');
+
 ?>

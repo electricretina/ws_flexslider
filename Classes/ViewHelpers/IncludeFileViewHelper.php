@@ -1,28 +1,19 @@
 <?php
 namespace WapplerSystems\WsFlexslider\ViewHelpers;
 
-/***************************************************************
-*  Copyright notice
-*
-*  (c) 2010 Georg Ringer <typo3@ringerge.org>
-*  All rights reserved
-*
-*  This script is part of the TYPO3 project. The TYPO3 project is
-*  free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  The GNU General Public License can be found at
-*  http://www.gnu.org/copyleft/gpl.html.
-*
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+	/**
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * ViewHelper to include a css/js file
@@ -44,29 +35,23 @@ class IncludeFileViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
 	 * Include a CSS/JS file
 	 *
 	 * @param string $path Path to the CSS/JS file which should be included
-	 * @param boolean $moveToFooter Put JS in page footer
 	 * @param boolean $compress Define if file should be compressed
 	 * @return void
 	 */
-	public function render($path,$moveToFooter = 0, $compress = FALSE) {
+	public function render($path, $compress = FALSE) {
+		$pageRenderer = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Page\\PageRenderer');
 		if (TYPO3_MODE === 'FE') {
 			$path = $GLOBALS['TSFE']->tmpl->getFileName($path);
 
 				// JS
 			if (strtolower(substr($path, -3)) === '.js') {
-				if($moveToFooter){
-					$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile($path, NULL, $compress);					
-				}else{
-					$GLOBALS['TSFE']->getPageRenderer()->addJsFile($path, NULL, $compress);
-				}
+				$pageRenderer->addJsFile($path, NULL, $compress);
+
 				// CSS
 			} elseif (strtolower(substr($path, -4)) === '.css') {
-				$GLOBALS['TSFE']->getPageRenderer()->addCssFile($path, 'stylesheet', 'all', '', $compress);
+				$pageRenderer->addCssFile($path, 'stylesheet', 'all', '', $compress);
 			}
 		} else {
-			$doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('template');
-			$pageRenderer = $doc->getPageRenderer();
-
 				// JS
 			if (strtolower(substr($path, -3)) === '.js') {
 				$pageRenderer->addJsFile($path, NULL, $compress);

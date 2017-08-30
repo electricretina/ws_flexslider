@@ -7,8 +7,7 @@
 
 
 <f:section name="main">
-<v:asset.script path="EXT:ws_flexslider/Resources/Public/Javascript/jquery.flexslider.min.js" name="flexslider" movable="1" dependancies="jquery" />
-<div id="flexslider-{uid}" class="flexslider <f:if condition="{0:settings.carousel} == {0:'true'}">carousel</f:if>">
+<div id="flexslider-{uid}" class="flexslider <f:if condition="{0:settings.carousel} == {0:'true'}">carousel</f:if>" <f:if condition="{settings.controlNav}">style="margin-bottom:35px;"</f:if>>
   <ul class="slides">
 		<f:for each="{images}" as="item">
 			<f:render partial="Flexslider/Entry" arguments="{item: item, settings: settings}" />

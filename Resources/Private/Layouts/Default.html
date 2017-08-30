@@ -1,7 +1,10 @@
 {namespace ws=WapplerSystems\WsFlexslider\ViewHelpers}
 
-<f:if condition="{settings.theme}">
+<f:if condition="{settings.style}='default'">
 	<ws:includeFile path="{settings.theme}" />
+</f:if>
+<f:if condition="{settings.style}=='alternate'">
+    <ws:includeFile path="{settings.altTheme}" />
 </f:if>
 <f:if condition="{settings.mods}">
 	<ws:includeFile path="{settings.mods}" />

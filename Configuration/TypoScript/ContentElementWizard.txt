@@ -1,0 +1,13 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+	elements {
+		wsflexslider {
+			icon = ../typo3conf/ext/ws_flexslider/Resources/Public/Icons/icon.png
+			title = LLL:EXT:ws_flexslider/Resources/Private/Language/locallang.xml:list_title
+			description = LLL:EXT:news/Resources/Private/Language/locallang.xml:list_plus_wiz_description
+			tt_content_defValues {
+				CType = list
+				list_type = wsflexslider_pi1
+			}
+		}
+	}
+}
