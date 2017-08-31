@@ -1,10 +1,17 @@
 {namespace ws=WapplerSystems\WsFlexslider\ViewHelpers}
-
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
 <li>
 	<div class="slidercontent wsflexslider-{item.styleclass}">
 		<f:if condition="{item.image}">
-			<img src="<f:uri.image image="{item.image}" />" title="{item.image.orignalResource.title}" alt="{item.image.originalResource.alternative}" /> 
+		  <f:if condition="{item.image.originalResource.link}">
+		   	<f:then>
+				<v:link.typolink configuration="{parameter:item.image.originalResource.link}"><img src="<f:uri.image image="{item.image}" />" title="{item.image.orignalResource.title}" alt="{item.image.originalResource.alternative}" /></v:link.typolink>
+		  	 </f:then>
+			<f:else>
+				<img src="<f:uri.image image="{item.image}" />" title="{item.image.orignalResource.title}" alt="{item.image.originalResource.alternative}" />
+			</f:else>
+		  </f:if> 
 		</f:if>
 		<f:if condition="{settings.showcaption}">
 		<div class="caption-wrapper caption-align-{item.textposition}">
