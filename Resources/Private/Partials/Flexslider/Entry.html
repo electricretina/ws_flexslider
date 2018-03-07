@@ -14,18 +14,15 @@
 		  </f:if> 
 		</f:if>
 		<f:if condition="{settings.showcaption}">
-		 <v:if stack="{item.title:1,item.description:1}">
+		 <v:if stack="{0:item.title,1:'AND',2:item.description}">
+		  <f:then>
 			<div class="caption-wrapper caption-align-{item.textposition}">
 				<div class="caption-text">
 				    <f:if condition="{settings.showtitle}">
-				    	<f:if condition="{item.title}">
-					      <p class="caption-title">{item.title}</p>
-					    </f:if>			        
+				    	<p class="caption-title">{item.title}</p>					    		        
 				    </f:if>
 				    <f:if condition="{settings.showdescription}">
-	                    <f:if condition="{item.description}">
-	                        <div class="caption-body"><f:format.html>{item.description}</f:format.html></div>
-	                    </f:if>			        
+	                    <div class="caption-body"><f:format.html>{item.description}</f:format.html></div>
 				    </f:if>
 				</div>
 				<f:if condition="{item.link}">
@@ -36,42 +33,50 @@
 					</div>
 				</f:if>
 			</div>
-		  </v:if>
-		  <v:if stack="{item.title:1,item.description:0}">
-			  <div class="caption-wrapper caption-align-{item.textposition}">
-				<div class="caption-text">
-				    <f:if condition="{settings.showtitle}">
-				    	<f:if condition="{item.title}">
-					      <p class="caption-title">{item.title}</p>
-					    </f:if>			        
-				    </f:if>
-				</div>
-				<f:if condition="{item.link}">
-					<div class="caption-link">
-					<ws:DynLink arguments="{link: item.link}">
-						<f:translate key="more">More</f:translate>
-					</ws:DynLink>
+			</f:then>
+			<f:else>
+				<v:if stack="{0:item.title, 1:'AND',2:item.description,3:'==',4:0}">
+				  <f:then>
+					    <f:if condition="{settings.showtitle}">
+				  <div class="caption-wrapper caption-align-{item.textposition}">
+					<div class="caption-text">
+						      <p class="caption-title">{item.title}</p>
 					</div>
-				</f:if>
-			  </div>
+					<f:if condition="{item.link}">
+						<div class="caption-link">
+						<ws:DynLink arguments="{link: item.link}">
+							<f:translate key="more">More</f:translate>
+						</ws:DynLink>
+						</div>
+					</f:if>
+				  </div>
+					    </f:if>
+				  </f:then>
+				  <f:else>
+				  	<v:if stack="{0:item.title,1:'==',2:0,3:'AND',4:item.description}">
+					  <f:if condition="{settings.showdescription}">
+					  	<div class="caption-wrapper caption-align-{item.textposition}">
+						  <div class="caption-text">
+				                    
+				                        <div class="caption-body"><f:format.html>{item.description}</f:format.html></div>
+				                   		        
+							</div>
+							<f:if condition="{item.link}">
+								<div class="caption-link">
+								<ws:DynLink arguments="{link: item.link}">
+									<f:translate key="more">More</f:translate>
+								</ws:DynLink>
+								</div>
+							</f:if>
+						  </div>
+					  </f:if>
+					</v:if>
+				  </f:else>
+			    </v:if>
+			</f:else>
 		  </v:if>
-		  <v:if stack="{item.title:0,item.description:1}">
-			  <div class="caption-text">
-				    <f:if condition="{settings.showdescription}">
-	                    <f:if condition="{item.description}">
-	                        <div class="caption-body"><f:format.html>{item.description}</f:format.html></div>
-	                    </f:if>			        
-				    </f:if>
-				</div>
-				<f:if condition="{item.link}">
-					<div class="caption-link">
-					<ws:DynLink arguments="{link: item.link}">
-						<f:translate key="more">More</f:translate>
-					</ws:DynLink>
-					</div>
-				</f:if>
-			  </div>
-		  </v:if>
+		  
+		  
 		</f:if>
 	</div>
 </li>
