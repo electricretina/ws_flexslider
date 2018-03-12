@@ -4,10 +4,10 @@ plugin.tx_wsflexslider {
 	includejquerycore = 
 	
 	# cat=plugin.tx_wsflexslider; type=string; label=Location of the CSS file 
-	theme = EXT:ws_flexslider/Resources/Public/Css/flexslider_default.css
+	theme = EXT:ws_flexslider/Resources/Public/Css/flexslider.css
     
     # cat=plugin.tx_wsflexslider; type=string; label=Location of the altenate theme CSS file
-    altTheme = EXT:ws_flexslider/Resources/Public/Css/flexslider_clean.css
+    altTheme = EXT:ws_flexslider/Resources/Public/Css/flexslider_clean_new.css
     
     # cat=plugin.tx_wsflexslider; type=string; label=Location of the mods CSS file
     mods = EXT:ws_flexslider/Resources/Public/Css/mods.css
