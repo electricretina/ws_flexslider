@@ -75,7 +75,42 @@ $tempColumns = array(
 );
 
 
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns, 1);
+
+//tt_news activation
+$temp2Columns = array(
+		"tx_wsflexslider_activate" => array(
+				"exclude" => 1,
+				"label" => "LLL:EXT:ws_flexslider/Resources/Private/Language/locallang_db.xml:tt_content.tx_wsflexslider_activate",
+				"config" => array(
+						"type" => "check",
+				)
+		),
+		"tx_wsflexslider_duration" => array(
+				"exclude" => 1,
+				"label" => "LLL:EXT:ws_flexslider/Resources/Private/Language/locallang_db.xml:tt_content.tx_wsflexslider_duration",
+				"config" => array(
+						"type" => "input",
+						"size" => "5",
+						"trim" => "int",
+						"default" => "6000"
+				)
+		),
+);
+
+// add columns to tt_news
+if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('tt_news')) {
+	//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'static/tt_news/', 'Image-Cycle for tt_news - Cycle');
+	//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'static/tt_news/nivoslider/', 'Image-Cycle for tt_news - Nivo');
+	
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_news', $temp2Columns, 1);
+	$TCA['tt_news']['palettes']['tx_wsflexslider'] = array(
+			'showitem' => 'tx_wsflexslider_activate,tx_wsflexslider_duration',
+			'canNotCollapse' => 1,
+	);
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_news', '--palette--;LLL:EXT:ws_flexslider/Resources/Private/Language/locallang_db.xml:tt_content.tx_wsflexslider_title;tx_wsflexslider', '', 'after:image');
+}
 
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key,pages,recursive';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'tx_wsflexslider_images,pi_flexform';

@@ -20,6 +20,9 @@
 			<label index="tx_wsflexslider_domain_model_image.styleclass_style2">Style 2</label>
 			<label index="tx_wsflexslider_domain_model_image.styleclass_style3">Style 3</label>
 			<label index="tx_wsflexslider_domain_model_image.styleclass_style4">Style 4</label>
+			<label index="tt_content.tx_wsflexslider_activate">Activate Flex Slider</label>
+			<label index="tt_content.tx_wsflexslider_duration">FlexSlide Duration in milli-seconds</label>
+			<label index="tt_content.tx_wsflexslider_title">Image FlexSlider</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="images">Bilder</label>
