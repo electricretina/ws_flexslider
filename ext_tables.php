@@ -76,7 +76,7 @@ $tempColumns = array(
 
 
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns, 1);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
 
 //tt_news activation
 $temp2Columns = array(
@@ -104,7 +104,7 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('tt_news')) {
 	//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'static/tt_news/', 'Image-Cycle for tt_news - Cycle');
 	//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'static/tt_news/nivoslider/', 'Image-Cycle for tt_news - Nivo');
 	
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_news', $temp2Columns, 1);
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_news', $temp2Columns);
 	$TCA['tt_news']['palettes']['tx_wsflexslider'] = array(
 			'showitem' => 'tx_wsflexslider_activate,tx_wsflexslider_duration',
 			'canNotCollapse' => 1,
