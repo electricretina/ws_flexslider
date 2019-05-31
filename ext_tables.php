@@ -100,13 +100,9 @@ $temp2Columns = array(
 if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('tt_news')) {
 	//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'static/tt_news/', 'Image-Cycle for tt_news - Cycle');
 	//\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'static/tt_news/nivoslider/', 'Image-Cycle for tt_news - Nivo');
-	\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tt_news');
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_news', $tempColumns, 1);
-	$TCA['tt_news']['palettes']['tx_wsflexslider'] = array(
-			'showitem' => 'tx_wsflexslider_activate,tx_wsflexslider_duration',
-			'canNotCollapse' => 1,
-	);
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_news', '--palette--;LLL:EXT:ws_flexslider/Resources/Private/Language/locallang_db.xml:tt_content.tx_wsflexslider_title;tx_imagecycle', '', 'after:image');
+	//\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tt_news');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_news', $temp2Columns, 1);
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_news', 'tx_wsflexslider', '', 'after:image');
 }
 
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key,pages,recursive';
